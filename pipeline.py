@@ -52,7 +52,7 @@ def run_research_pipeline(topic : str) -> dict:
 
     print("\n Final Report\n",state['report'])
 
-    #critic report 
+    #CRITIC CHAIN - step 4
 
     print("\n"+" ="*50)
     print("step 4 - critic is reviewing the report ")
