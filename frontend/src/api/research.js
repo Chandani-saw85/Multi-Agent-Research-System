@@ -1,8 +1,14 @@
 /**
  * Sends a research topic to the Python Flask backend and awaits the complete JSON response.
  */
+const API_BASE_URL = (import.meta.env.VITE_API_BASE_URL || "").replace(/\/$/, "");
+
+function buildUrl(path) {
+  return `${API_BASE_URL}${path}`;
+}
+
 export async function runResearch(topic) {
-  const response = await fetch("/api/research", {
+  const response = await fetch(buildUrl("/api/research"), {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -19,7 +25,7 @@ export async function runResearch(topic) {
 }
 
 export async function fetchHistory() {
-  const response = await fetch("/api/history");
+  const response = await fetch(buildUrl("/api/history"));
   if (!response.ok) {
     throw new Error("Unable to load research history.");
   }
@@ -27,7 +33,7 @@ export async function fetchHistory() {
 }
 
 export async function fetchSaved() {
-  const response = await fetch("/api/saved");
+  const response = await fetch(buildUrl("/api/saved"));
   if (!response.ok) {
     throw new Error("Unable to load saved research.");
   }
@@ -35,7 +41,7 @@ export async function fetchSaved() {
 }
 
 export async function saveResearch(id) {
-  const response = await fetch(`/api/save/${id}`, { method: "POST" });
+  const response = await fetch(buildUrl(`/api/save/${id}`), { method: "POST" });
   if (!response.ok) {
     const errorData = await response.json().catch(() => ({}));
     throw new Error(errorData.error || "Unable to save research.");
@@ -44,7 +50,7 @@ export async function saveResearch(id) {
 }
 
 export async function saveResearchEntry(topic, payload) {
-  const response = await fetch("/api/research/save-entry", {
+  const response = await fetch(buildUrl("/api/research/save-entry"), {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
