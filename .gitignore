@@ -1,6 +1,14 @@
 .env
+.env.*
 __pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.log
+.pytest_cache/
 frontend/node_modules/
 frontend/dist/
+frontend/.env
+backend/.env
 
 
