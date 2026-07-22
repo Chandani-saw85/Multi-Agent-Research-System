@@ -1,7 +1,5 @@
 AI Multi-Agent Research System
 An AI-powered research assistant that uses multiple agents to gather information, analyze sources, and generate polished research reports.
-............................
-
 
 Highlights:
 
